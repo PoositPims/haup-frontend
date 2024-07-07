@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import classes from "./AddConfirm.module.css";
 
-function AddConfirm({ closePopUp, onAddData }) {
+function AddConfirm({ closePopUp, onAddData, addAndClase }) {
   const [formData, setFormData] = useState({
     carBrand: "",
     carModel: "",
@@ -31,7 +31,12 @@ function AddConfirm({ closePopUp, onAddData }) {
       carPic: "https://picsum.photos/id/1/250/250",
     });
     setShowPopupAdd(false);
+    addAndClase(false);
   };
+
+  // const clickAddandClose = () => {
+  // addAndClase(false);
+  // };
 
   const handleClickClose = () => {
     closePopUp(false);

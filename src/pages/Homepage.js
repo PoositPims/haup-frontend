@@ -31,6 +31,10 @@ function Homepage() {
     setShowPopupAdd(childrenData);
   };
 
+  const handleAddAndClose = (childrenData) => {
+    setShowPopupAdd(childrenData);
+  };
+
   const [currentId, setCurrentId] = useState(0);
 
   function handleAddData(newData) {
@@ -90,6 +94,7 @@ function Homepage() {
           <AddConfirm
             closePopUp={handleDataFromChild}
             onAddData={handleAddData}
+            addAndClase={handleAddAndClose}
           />
         )}
       </div>
