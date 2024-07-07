@@ -4,7 +4,7 @@ import { NavLink } from "react-router-dom";
 
 function CarCard({
   id,
-  carBarnd,
+  carBrand,
   carModel,
   carRegist,
   province,
@@ -17,11 +17,11 @@ function CarCard({
         to={{
           pathname: "/eachCar",
         }}
-        state={{ id, carBarnd, carModel, carRegist, province, status, carPic }}
+        state={{ id, carBrand, carModel, carRegist, province, status, carPic }}
       >
         <img class="card-img-top rounded" alt="card-img" src={carPic} />
         <div class="d-flex justify-content-between">
-          <p>{carBarnd}</p>
+          <p>{carBrand}</p>
           <div
             class={
               status === "not availavle" ? "btn btn-success" : "btn btn-danger"

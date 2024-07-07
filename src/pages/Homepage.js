@@ -7,17 +7,9 @@ import AddConfirm from "../companents/ConfirmPopup/AddConfirm";
 function Homepage() {
   const [showPopupAdd, setShowPopupAdd] = useState(false);
   const [formData, setFormData] = useState([
-    // {
-    //   carBarnd: "",
-    //   carModel: "",
-    //   carRegist: "",
-    //   province: "",
-    //   status: "",
-    //   carPic: "https://picsum.photos/id/1/250/250",
-    // },
     {
       id: 1,
-      carBarnd: "Honda",
+      carBrand: "Honda",
       carModel: "City",
       carRegist: "กก 1234",
       province: "Bangkok",
@@ -26,7 +18,7 @@ function Homepage() {
     },
     {
       id: 2,
-      carBarnd: "Toyota",
+      carBrand: "Toyota",
       carModel: "Altis",
       carRegist: "ขข 5555",
       province: "Songkhla",
@@ -45,7 +37,7 @@ function Homepage() {
     const newId = currentId + 1;
     let newCar = {
       id: newId,
-      carBarnd: newData.carBarnd,
+      carBrand: newData.carBrand,
       carModel: newData.carModel,
       carRegist: newData.carRegist,
       province: newData.province,
@@ -80,7 +72,7 @@ function Homepage() {
               {formData.map((item) => (
                 <CarCard
                   id={item.id}
-                  carBarnd={item.carBarnd}
+                  carBrand={item.carBrand}
                   carModel={item.carModel}
                   carRegist={item.carRegist}
                   province={item.province}

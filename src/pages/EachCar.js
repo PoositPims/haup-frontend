@@ -16,14 +16,16 @@ function EachCar() {
 
   function onEdit() {}
 
+  console.log("data", data);
+
   function handleDeleteClick(itemId) {
-    console.log("data======>", data);
+    // console.log("data======>", data);
+    console.log("itemId", itemId);
     setItemToDelete(itemId);
     setShowConfirm(true);
   }
 
   const confirmDelete = () => {
-    // console.log("items ====> before", items);
     setItems(items.filter((item) => item.id !== itemToDelete));
     setShowConfirm(false);
     setItemToDelete(null);
