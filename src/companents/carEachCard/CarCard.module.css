@@ -1,0 +1,4 @@
+.eachCard {
+  flex-wrap: wrap;
+  margin: 0 30px;
+}

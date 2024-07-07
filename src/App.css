@@ -1,4 +1,24 @@
-.App {
+* {
+  outline: 1px dashed lime;
+  /* font-family: "Prompt", sans-serif; */
+}
+
+html,
+body {
+  height: calc(100% - env(safe-area-inset-top) - env(safe-area-inset-bottom));
+  margin: 0; /* Remove default margin */
+}
+
+height {
+  height: 100%;
+}
+
+.container {
+  width: 90%;
+  margin: 0 auto;
+}
+
+/* .App {
   text-align: center;
 }
 
@@ -35,4 +55,4 @@
   to {
     transform: rotate(360deg);
   }
-}
+} */

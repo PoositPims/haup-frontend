@@ -1,0 +1,20 @@
+.contaciner {
+  width: 90%;
+  margin: 20px auto 0 auto;
+}
+
+.cardContainer {
+  margin-top: 30px;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+/*  */
+/* App.css */
+.App {
+  text-align: center;
+}
+
+button {
+  margin: 10px;
+}
