@@ -3,9 +3,13 @@ import MainNavbar from "../companents/layout/MainNavbar";
 import CarCard from "../companents/carEachCard/CarCard";
 import classes from "./Homepahe.module.css";
 import AddConfirm from "../companents/ConfirmPopup/AddConfirm";
+import Sidebar from "../companents/layout/Sidebar";
 
 function Homepage() {
   const [showPopupAdd, setShowPopupAdd] = useState(false);
+  // const [isOpen, setIsOpen] = useState(false);
+  const [openSideBar, setOpenSideBar] = useState(false);
+
   const [formData, setFormData] = useState([
     {
       id: 1,
@@ -31,8 +35,18 @@ function Homepage() {
     setShowPopupAdd(childrenData);
   };
 
+  const handleCloseSidebar = (childrenData) => {
+    setOpenSideBar(childrenData);
+  };
+
   const handleAddAndClose = (childrenData) => {
     setShowPopupAdd(childrenData);
+  };
+
+  const [isOpen, setIsOpen] = useState(false);
+
+  const toggleSidebar = () => {
+    setIsOpen(!isOpen);
   };
 
   const [currentId, setCurrentId] = useState(0);
@@ -59,6 +73,11 @@ function Homepage() {
   return (
     <div>
       <MainNavbar />
+      <button class="btn btn-primary" onClick={toggleSidebar}>
+        Toggle Sidebar
+      </button>
+      <Sidebar isOpen={isOpen} toggleSidebar={toggleSidebar} />
+
       <div className={classes.contaciner}>
         <div className="d-flex justify-content-between">
           <h4>Company car</h4>
@@ -70,6 +89,7 @@ function Homepage() {
             Add car
           </button>
         </div>
+
         <div className={classes.cardContainer}>
           {formData.length > 0 ? (
             <>
@@ -89,7 +109,6 @@ function Homepage() {
             <p>There is no data</p>
           )}
         </div>
-
         {showPopupAdd && (
           <AddConfirm
             closePopUp={handleDataFromChild}

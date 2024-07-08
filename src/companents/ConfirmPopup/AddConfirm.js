@@ -34,10 +34,6 @@ function AddConfirm({ closePopUp, onAddData, addAndClase }) {
     addAndClase(false);
   };
 
-  // const clickAddandClose = () => {
-  // addAndClase(false);
-  // };
-
   const handleClickClose = () => {
     closePopUp(false);
   };
