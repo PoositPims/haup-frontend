@@ -1,52 +1,25 @@
-import React, { useState } from "react";
-import MainNavbar from "../companents/layout/MainNavbar";
+import React, { useContext, useState } from "react";
+// import MainNavbar from "../companents/layout/MainNavbar";
 import CarCard from "../companents/carEachCard/CarCard";
 import classes from "./Homepahe.module.css";
 import AddConfirm from "../companents/ConfirmPopup/AddConfirm";
-import Sidebar from "../companents/layout/Sidebar";
+// import Sidebar from "../companents/layout/Sidebar";
+import LayoutPage from "../companents/layout/LayoutPage";
+import { CarContexts } from "../contexts/CarContexts";
 
 function Homepage() {
+  const { cars } = useContext(CarContexts);
+  console.log("cars", cars);
   const [showPopupAdd, setShowPopupAdd] = useState(false);
-  // const [isOpen, setIsOpen] = useState(false);
-  const [openSideBar, setOpenSideBar] = useState(false);
-
-  const [formData, setFormData] = useState([
-    {
-      id: 1,
-      carBrand: "Honda",
-      carModel: "City",
-      carRegist: "กก 1234",
-      province: "Bangkok",
-      status: "not availavle",
-      carPic: "https://picsum.photos/id/1/250/250",
-    },
-    {
-      id: 2,
-      carBrand: "Toyota",
-      carModel: "Altis",
-      carRegist: "ขข 5555",
-      province: "Songkhla",
-      status: "availavle",
-      carPic: "https://picsum.photos/id/1/250/250",
-    },
-  ]);
+  // const [formData, setFormData] = useState([]);
+  const [formData, setFormData] = useState(cars);
 
   const handleDataFromChild = (childrenData) => {
     setShowPopupAdd(childrenData);
   };
 
-  const handleCloseSidebar = (childrenData) => {
-    setOpenSideBar(childrenData);
-  };
-
   const handleAddAndClose = (childrenData) => {
     setShowPopupAdd(childrenData);
-  };
-
-  const [isOpen, setIsOpen] = useState(false);
-
-  const toggleSidebar = () => {
-    setIsOpen(!isOpen);
   };
 
   const [currentId, setCurrentId] = useState(0);
@@ -63,8 +36,6 @@ function Homepage() {
       carPic: newData.carPic,
     };
     setCurrentId(newId);
-    console.log("formData", typeof formData);
-    console.log("newData", newData);
     setFormData([...formData, newCar]);
 
     console.log("formData", formData);
@@ -72,12 +43,7 @@ function Homepage() {
 
   return (
     <div>
-      <MainNavbar />
-      <button class="btn btn-primary" onClick={toggleSidebar}>
-        Toggle Sidebar
-      </button>
-      <Sidebar isOpen={isOpen} toggleSidebar={toggleSidebar} />
-
+      <LayoutPage />
       <div className={classes.contaciner}>
         <div className="d-flex justify-content-between">
           <h4>Company car</h4>

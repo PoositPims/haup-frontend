@@ -3,12 +3,7 @@ import { Collapse, Nav, NavItem, NavLink } from "react-bootstrap";
 import classes from "./SideBar.module.css";
 import Card from "react-bootstrap/Card";
 
-function Sidebar({ closeSideBar, isOpen, toggleSidebar }) {
-  const [close, setClose] = useState(true);
-
-  function handleCloseSidebar() {
-    closeSideBar(false);
-  }
+function Sidebar({ isOpen }) {
   return (
     <div>
       <Collapse in={isOpen} dimension="width" style={{ position: "absolute" }}>
@@ -16,10 +11,13 @@ function Sidebar({ closeSideBar, isOpen, toggleSidebar }) {
           <Card body style={{ width: "400px" }}>
             <Nav className="d-flex flex-column">
               <NavItem>
-                <NavLink href="#">Item 1</NavLink>
+                <NavLink href="/">All Car</NavLink>
               </NavItem>
               <NavItem>
-                <NavLink href="#">Item 2</NavLink>
+                <NavLink href="/availableCar">Available</NavLink>
+              </NavItem>
+              <NavItem>
+                <NavLink href="/notAvailable">Not available</NavLink>
               </NavItem>
             </Nav>
           </Card>
