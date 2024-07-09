@@ -1,17 +1,13 @@
 import React, { useContext, useState } from "react";
-// import MainNavbar from "../companents/layout/MainNavbar";
 import CarCard from "../companents/carEachCard/CarCard";
 import classes from "./Homepahe.module.css";
 import AddConfirm from "../companents/ConfirmPopup/AddConfirm";
-// import Sidebar from "../companents/layout/Sidebar";
 import LayoutPage from "../companents/layout/LayoutPage";
 import { CarContexts } from "../contexts/CarContexts";
 
 function Homepage() {
   const { cars } = useContext(CarContexts);
-  console.log("cars", cars);
   const [showPopupAdd, setShowPopupAdd] = useState(false);
-  // const [formData, setFormData] = useState([]);
   const [formData, setFormData] = useState(cars);
 
   const handleDataFromChild = (childrenData) => {
@@ -25,6 +21,7 @@ function Homepage() {
   const [currentId, setCurrentId] = useState(0);
 
   function handleAddData(newData) {
+    console.log("newData", newData);
     const newId = currentId + 1;
     let newCar = {
       id: newId,
@@ -57,9 +54,9 @@ function Homepage() {
         </div>
 
         <div className={classes.cardContainer}>
-          {formData.length > 0 ? (
+          {cars?.car?.length > 0 ? (
             <>
-              {formData.map((item) => (
+              {cars?.car?.map((item) => (
                 <CarCard
                   id={item.id}
                   carBrand={item.carBrand}

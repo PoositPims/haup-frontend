@@ -24,7 +24,7 @@ function CarCard({
           <p>{carBrand}</p>
           <div
             class={
-              status === "not availavle" ? "btn btn-success" : "btn btn-danger"
+              status === "not available" ? "btn btn-danger" : "btn btn-success"
             }
           >
             {status}

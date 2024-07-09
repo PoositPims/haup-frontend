@@ -2,8 +2,10 @@ import React, { useState } from "react";
 import MainNavbar from "../companents/layout/MainNavbar";
 import classes from "./EachCar.module.css";
 import { useLocation, useNavigate } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
 import EachCarDetail from "../companents/carEachCard/EachCarDetail";
 import EachCarPicture from "../companents/carEachCard/EachCarPicture";
+import axios from "../config/axios";
 
 function EachCar() {
   const navigate = useNavigate();
@@ -11,6 +13,7 @@ function EachCar() {
   const data = location.state;
 
   const [items, setItems] = useState([data]);
+  // console.log("[data]", [data]);
   const [showConfirm, setShowConfirm] = useState(false);
   const [itemToDelete, setItemToDelete] = useState(null);
 
@@ -25,8 +28,17 @@ function EachCar() {
     setShowConfirm(true);
   }
 
-  const confirmDelete = () => {
-    setItems(items.filter((item) => item.id !== itemToDelete));
+  const confirmDelete = async () => {
+    // setItems(items.filter((item) => item.id !== itemToDelete));
+    console.log("items===>", items);
+    const id = items.filter((item) => item.id !== itemToDelete);
+    console.log("id", id);
+    try {
+      const res = await axios.delete(`/cars/${id}`);
+      console.log("res", res);
+    } catch (err) {
+      console.log("err", err);
+    }
     setShowConfirm(false);
     setItemToDelete(null);
     navigate("/");

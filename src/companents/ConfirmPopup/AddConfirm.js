@@ -1,15 +1,17 @@
 import React, { useState } from "react";
 import classes from "./AddConfirm.module.css";
+import axios from "axios";
 
 function AddConfirm({ closePopUp, onAddData, addAndClase }) {
-  const [formData, setFormData] = useState({
-    carBrand: "",
-    carModel: "",
-    carRegist: "",
-    province: "",
-    status: "availavle",
-    carPic: "https://picsum.photos/id/1/250/250",
-  });
+  // const [formData, setFormData] = useState({
+  //   carBrand: "",
+  //   carModel: "",
+  //   carRegist: "",
+  //   province: "",
+  //   status: "availavle",
+  //   carPic: "https://picsum.photos/id/1/250/250",
+  // });
+  const [formData, setFormData] = useState({});
   const [showPopupAdd, setShowPopupAdd] = useState(false);
 
   const handleInputChange = (e) => {
@@ -20,16 +22,24 @@ function AddConfirm({ closePopUp, onAddData, addAndClase }) {
     });
   };
 
-  const handleFormSubmit = (e) => {
+  const handleFormSubmit = async (e) => {
+    //
     e.preventDefault();
-    onAddData({
-      carBrand: formData.carBrand,
-      carModel: formData.carModel,
-      carRegist: formData.carRegist,
-      province: formData.province,
-      status: "availavle",
-      carPic: "https://picsum.photos/id/1/250/250",
-    });
+    try {
+      const res = await axios.post("/cars/createCar", {
+        carBrand: formData.carBrand,
+        carModel: formData.carModel,
+        carRegist: formData.carRegist,
+        province: formData.province,
+        status: "availavle",
+        carPic: "https://picsum.photos/id/1/250/250",
+      });
+      console.log("res", res);
+      onAddData(res);
+    } catch (err) {
+      console.log("err", err);
+    }
+
     setShowPopupAdd(false);
     addAndClase(false);
   };
