@@ -7,7 +7,7 @@ function EachCarDetail(data, field) {
     carModel: data.data.carModel,
     carRegist: data.data.carRegist,
     province: data.data.province,
-    status: data.data.status,
+    isAvailable: data.data.isAvailable,
   });
   //   console.log("data", data);
 
@@ -20,7 +20,7 @@ function EachCarDetail(data, field) {
       return "ป้ายทะเบียน";
     } else if (field === "province") {
       return "จังหวัด";
-    } else if (field === "status") {
+    } else if (field === "isAvailable") {
       return "Status";
     }
   }
@@ -30,7 +30,7 @@ function EachCarDetail(data, field) {
     carBrand: false,
     carRegist: false,
     province: false,
-    status: false,
+    isAvailable: false,
   });
 
   const [inputValues, setInputValues] = useState({ ...carData });

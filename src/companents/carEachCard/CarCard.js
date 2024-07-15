@@ -8,14 +8,16 @@ function CarCard({
   carModel,
   carRegist,
   province,
-  status,
+  isAvailable,
   carPic,
 }) {
+  console.log("isAvailable", isAvailable);
+
   return (
     <div className={classes.eachCard}>
       <NavLink
         to={{
-          pathname: "/eachCar",
+          pathname: "/each-car",
         }}
         state={{
           id,
@@ -23,7 +25,7 @@ function CarCard({
           carModel,
           carRegist,
           province,
-          status,
+          isAvailable,
           carPic,
         }}
       >
@@ -32,10 +34,10 @@ function CarCard({
           <p>{carBrand}</p>
           <div
             className={
-              status === "not available" ? "btn btn-danger" : "btn btn-success"
+              isAvailable === false ? "btn btn-danger" : "btn btn-success"
             }
           >
-            {status}
+            {isAvailable === false ? "Not available" : "Available"}
           </div>
         </div>
         <p>{carModel}</p>

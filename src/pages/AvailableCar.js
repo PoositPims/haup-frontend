@@ -6,7 +6,7 @@ import CarCard from "../companents/carEachCard/CarCard";
 
 function AvailableCar() {
   const { cars } = useContext(CarContexts);
-  const availableCar = cars.car?.filter((car) => car.status === "available");
+  const availableCar = cars.car?.filter((car) => car.isAvailable === true);
 
   return (
     <div>
@@ -16,14 +16,15 @@ function AvailableCar() {
         <div className={classes.cardContainer}>
           {cars?.car?.length > 0 ? (
             <>
-              {availableCar?.map((item) => (
+              {availableCar?.map((item, index) => (
                 <CarCard
                   id={item.id}
+                  key={index}
                   carBrand={item.carBrand}
                   carModel={item.carModel}
                   carRegist={item.carRegist}
                   province={item.province}
-                  status={item.status}
+                  isAvailable={item.isAvailable}
                   carPic={item.carPic}
                 />
               ))}

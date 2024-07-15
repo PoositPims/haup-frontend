@@ -1,6 +1,5 @@
 import React, { useContext, useState } from "react";
 import classes from "./AddConfirm.module.css";
-import axios from "axios";
 import { CarContexts } from "../../contexts/CarContexts";
 
 function AddConfirm({ closePopUp, onAddData, addAndClase }) {
@@ -10,17 +9,15 @@ function AddConfirm({ closePopUp, onAddData, addAndClase }) {
     carModel: "",
     carRegist: "",
     province: "",
-    status: "availavle",
+    isAvailable: false,
     carPic: "https://picsum.photos/id/1/250/250",
   });
-  // const [formData, setFormData] = useState({});
-  // const [showPopupAdd, setShowPopupAdd] = useState(false);
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setFormData({
       ...formData,
-      [name]: value,
+      [name]: name === "isAvailable" ? value === "true" : value,
     });
   };
 
@@ -32,7 +29,7 @@ function AddConfirm({ closePopUp, onAddData, addAndClase }) {
       carModel: formData.carModel,
       carRegist: formData.carRegist,
       province: formData.province,
-      status: "available",
+      isAvailable: formData.isAvailable,
       carPic: "https://picsum.photos/id/1/250/250",
     };
     console.log("type valuetoAddCar", typeof valuetoAddCar);
@@ -91,16 +88,29 @@ function AddConfirm({ closePopUp, onAddData, addAndClase }) {
                 required
               />
             </label>
-            <button className="btn btn-primary" type="submit">
-              Add
-            </button>
-            <button
-              type="button"
-              className="btn btn-danger"
-              onClick={handleClickClose}
-            >
-              Cancle
-            </button>
+            <label>
+              <select
+                className="form-select form-select-lg mb-3"
+                name="isAvailable"
+                onChange={handleInputChange}
+                value={formData.isAvailable} // Convert boolean to string
+              >
+                <option value="true">Available</option>
+                <option value="false">Not Availavle</option>
+              </select>
+            </label>
+            <div>
+              <button className="btn btn-primary" type="submit">
+                Add
+              </button>
+              <button
+                type="button"
+                className="btn btn-danger"
+                onClick={handleClickClose}
+              >
+                Cancle
+              </button>
+            </div>
           </form>
         </div>
       </div>

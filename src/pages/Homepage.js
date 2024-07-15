@@ -71,7 +71,7 @@ function Homepage() {
                   carModel={item.carModel}
                   carRegist={item.carRegist}
                   province={item.province}
-                  status={item.status}
+                  isAvailable={item.isAvailable}
                   carPic={item.carPic}
                 />
               ))}

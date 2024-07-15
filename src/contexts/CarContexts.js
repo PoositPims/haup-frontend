@@ -19,6 +19,7 @@ export const CarProvider = ({ children }) => {
   }, []);
 
   const addCar = async (newData) => {
+    console.log("newData", newData);
     try {
       const res = await axios.post("/cars/createCar", newData);
       setCars((preCars) =>
