@@ -1,18 +1,20 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import classes from "./AddConfirm.module.css";
 import axios from "axios";
+import { CarContexts } from "../../contexts/CarContexts";
 
 function AddConfirm({ closePopUp, onAddData, addAndClase }) {
-  // const [formData, setFormData] = useState({
-  //   carBrand: "",
-  //   carModel: "",
-  //   carRegist: "",
-  //   province: "",
-  //   status: "availavle",
-  //   carPic: "https://picsum.photos/id/1/250/250",
-  // });
-  const [formData, setFormData] = useState({});
-  const [showPopupAdd, setShowPopupAdd] = useState(false);
+  const { addCar } = useContext(CarContexts);
+  const [formData, setFormData] = useState({
+    carBrand: "",
+    carModel: "",
+    carRegist: "",
+    province: "",
+    status: "availavle",
+    carPic: "https://picsum.photos/id/1/250/250",
+  });
+  // const [formData, setFormData] = useState({});
+  // const [showPopupAdd, setShowPopupAdd] = useState(false);
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -23,25 +25,18 @@ function AddConfirm({ closePopUp, onAddData, addAndClase }) {
   };
 
   const handleFormSubmit = async (e) => {
-    //
     e.preventDefault();
-    try {
-      const res = await axios.post("/cars/createCar", {
-        carBrand: formData.carBrand,
-        carModel: formData.carModel,
-        carRegist: formData.carRegist,
-        province: formData.province,
-        status: "availavle",
-        carPic: "https://picsum.photos/id/1/250/250",
-      });
-      console.log("res", res);
-      onAddData(res);
-    } catch (err) {
-      console.log("err", err);
-    }
-
-    setShowPopupAdd(false);
-    addAndClase(false);
+    const valuetoAddCar = {
+      carBrand: formData.carBrand,
+      carModel: formData.carModel,
+      carRegist: formData.carRegist,
+      province: formData.province,
+      status: "availavle",
+      carPic: "https://picsum.photos/id/1/250/250",
+    };
+    console.log("type valuetoAddCar", typeof valuetoAddCar);
+    console.log("valuetoAddCar", typeof valuetoAddCar);
+    addCar(valuetoAddCar);
   };
 
   const handleClickClose = () => {

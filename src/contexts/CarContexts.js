@@ -10,20 +10,30 @@ export const CarProvider = ({ children }) => {
     const fetchData = async () => {
       try {
         const res = await axios.get("/cars/allCar");
-        // console.log("res", res);
-        // console.log("res.data", res.data);
         setCars(res.data);
       } catch (err) {
-        console.log("err", err);
-        // console.dir("err", err);
+        console.error(err);
       }
     };
     fetchData();
   }, []);
 
+  const addCar = async (newData) => {
+    console.log("newData", newData);
+    try {
+      const res = await axios.post("/cars/createCar", newData);
+      setCars((preCars) =>
+        Array.isArray(preCars) ? [...preCars, res.data.car] : [res.data.car]
+      );
+      console.log("cars", cars);
+    } catch (err) {
+      console.error("err", err);
+    }
+  };
+
   return (
     <>
-      <CarContexts.Provider value={{ cars, setCars }}>
+      <CarContexts.Provider value={{ cars, setCars, addCar }}>
         {children}
       </CarContexts.Provider>
     </>

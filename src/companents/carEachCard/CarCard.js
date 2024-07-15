@@ -17,7 +17,15 @@ function CarCard({
         to={{
           pathname: "/eachCar",
         }}
-        state={{ id, carBrand, carModel, carRegist, province, status, carPic }}
+        state={{
+          id,
+          carBrand,
+          carModel,
+          carRegist,
+          province,
+          status,
+          carPic,
+        }}
       >
         <img class="card-img-top rounded" alt="card-img" src={carPic} />
         <div class="d-flex justify-content-between">

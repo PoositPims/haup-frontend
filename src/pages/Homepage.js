@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import CarCard from "../companents/carEachCard/CarCard";
 import classes from "./Homepahe.module.css";
 import AddConfirm from "../companents/ConfirmPopup/AddConfirm";
@@ -7,8 +7,9 @@ import { CarContexts } from "../contexts/CarContexts";
 
 function Homepage() {
   const { cars } = useContext(CarContexts);
+  console.log("cars", cars);
   const [showPopupAdd, setShowPopupAdd] = useState(false);
-  const [formData, setFormData] = useState(cars);
+  const [formData, setFormData] = useState([]);
 
   const handleDataFromChild = (childrenData) => {
     setShowPopupAdd(childrenData);
@@ -20,23 +21,29 @@ function Homepage() {
 
   const [currentId, setCurrentId] = useState(0);
 
-  function handleAddData(newData) {
-    console.log("newData", newData);
-    const newId = currentId + 1;
-    let newCar = {
-      id: newId,
-      carBrand: newData.carBrand,
-      carModel: newData.carModel,
-      carRegist: newData.carRegist,
-      province: newData.province,
-      status: newData.status,
-      carPic: newData.carPic,
-    };
-    setCurrentId(newId);
-    setFormData([...formData, newCar]);
+  useEffect(() => {
+    console.log("formData updated", formData);
+    console.log("cars", cars);
+  }, [cars, formData]);
 
-    console.log("formData", formData);
-  }
+  // function handleAddData(newData) {
+  //   console.log("newData", newData.data.car);
+  //   console.log("newData", newData.data.car);
+  //   let newCar = {
+  //     carBrand: newData.data.car.carBrand,
+  //     carModel: newData.data.car.carModel,
+  //     carRegist: newData.data.car.carRegist,
+  //     province: newData.data.car.province,
+  //     status: newData.data.car.status,
+  //     carPic: newData.data.car.carPic,
+  //   };
+  //   setFormData((prev) => {
+  //     const updatedFormData = [...prev, newCar];
+  //     console.log("newCar", newCar);
+  //     console.log("updatedFormData", updatedFormData);
+  //     return updatedFormData;
+  //   });
+  // }
 
   return (
     <div>
@@ -59,6 +66,7 @@ function Homepage() {
               {cars?.car?.map((item) => (
                 <CarCard
                   id={item.id}
+                  key={item.id}
                   carBrand={item.carBrand}
                   carModel={item.carModel}
                   carRegist={item.carRegist}
@@ -75,9 +83,9 @@ function Homepage() {
         {showPopupAdd && (
           <AddConfirm
             closePopUp={handleDataFromChild}
-            onAddData={handleAddData}
             addAndClase={handleAddAndClose}
           />
+          // onAddData={handleAddData}
         )}
       </div>
     </div>
