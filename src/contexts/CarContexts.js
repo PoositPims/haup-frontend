@@ -19,13 +19,11 @@ export const CarProvider = ({ children }) => {
   }, []);
 
   const addCar = async (newData) => {
-    console.log("newData", newData);
     try {
       const res = await axios.post("/cars/createCar", newData);
       setCars((preCars) =>
         Array.isArray(preCars) ? [...preCars, res.data.car] : [res.data.car]
       );
-      console.log("cars", cars);
     } catch (err) {
       console.error("err", err);
     }

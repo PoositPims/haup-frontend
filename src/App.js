@@ -14,15 +14,9 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Homepage />} exact />
-        </Routes>
-        <Routes>
-          <Route path="/eachCar" element={<EachCar />} />
-        </Routes>
-        <Routes>
-          <Route path="/availableCar" element={<AvailableCar />} />
-        </Routes>
-        <Routes>
-          <Route path="/notAvailable" element={<NotAvailableCar />} />
+          <Route path="/each-car" element={<EachCar />} />
+          <Route path="/available-car" element={<AvailableCar />} />
+          <Route path="/not-available" element={<NotAvailableCar />} />
         </Routes>
       </BrowserRouter>
     </div>

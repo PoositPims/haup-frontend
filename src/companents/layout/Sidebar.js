@@ -14,10 +14,11 @@ function Sidebar({ isOpen }) {
                 <NavLink href="/">All Car</NavLink>
               </NavItem>
               <NavItem>
-                <NavLink href="/availableCar">Available</NavLink>
+                {/* <NavLink href="/availableCar">Available</NavLink> */}
+                <NavLink href="/available-car">Available</NavLink>
               </NavItem>
               <NavItem>
-                <NavLink href="/notAvailable">Not available</NavLink>
+                <NavLink href="/not-available">Not available</NavLink>
               </NavItem>
             </Nav>
           </Card>

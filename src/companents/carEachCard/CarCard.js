@@ -27,11 +27,11 @@ function CarCard({
           carPic,
         }}
       >
-        <img class="card-img-top rounded" alt="card-img" src={carPic} />
-        <div class="d-flex justify-content-between">
+        <img className="card-img-top rounded" alt="card-img" src={carPic} />
+        <div className="d-flex justify-content-between">
           <p>{carBrand}</p>
           <div
-            class={
+            className={
               status === "not available" ? "btn btn-danger" : "btn btn-success"
             }
           >

@@ -53,7 +53,7 @@ function Homepage() {
           <h4>Company car</h4>
           <button
             type="button"
-            class="btn btn-primary"
+            className="btn btn-primary"
             onClick={() => setShowPopupAdd(true)}
           >
             Add car

@@ -11,7 +11,7 @@ function LayoutPage() {
   return (
     <div>
       <MainNavbar />
-      <button class="btn btn-primary" onClick={toggleSidebar}>
+      <button className="btn btn-primary" onClick={toggleSidebar}>
         Toggle Sidebar
       </button>
       <Sidebar isOpen={isOpen} toggleSidebar={toggleSidebar} />

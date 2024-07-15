@@ -26,17 +26,19 @@ function AddConfirm({ closePopUp, onAddData, addAndClase }) {
 
   const handleFormSubmit = async (e) => {
     e.preventDefault();
+
     const valuetoAddCar = {
       carBrand: formData.carBrand,
       carModel: formData.carModel,
       carRegist: formData.carRegist,
       province: formData.province,
-      status: "availavle",
+      status: "available",
       carPic: "https://picsum.photos/id/1/250/250",
     };
     console.log("type valuetoAddCar", typeof valuetoAddCar);
-    console.log("valuetoAddCar", typeof valuetoAddCar);
+    console.log("valuetoAddCar", valuetoAddCar);
     addCar(valuetoAddCar);
+    window.location.reload();
   };
 
   const handleClickClose = () => {
