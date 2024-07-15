@@ -28,13 +28,7 @@ function EachCar() {
   }
 
   const confirmDelete = async () => {
-    // setItems(items.filter((item) => item.id !== itemToDelete));
-    // console.log("itemToDelete", itemToDelete);
-    // console.log("items===>", items);
-    // const id = items.filter((item) => item.id !== itemToDelete);
-    // console.log("id", id);
     try {
-      // const res = await axios.delete(`/cars/${id}`);
       const res = await axios.delete(`/cars/${itemToDelete}`);
       console.log("res", res);
     } catch (err) {

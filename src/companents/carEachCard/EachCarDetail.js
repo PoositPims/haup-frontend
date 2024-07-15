@@ -1,7 +1,9 @@
 import React, { useState } from "react";
-import classes from "./EachCarDetail.module.css";
+// import classes from "./EachCarDetail.module.css";
 
 function EachCarDetail(data, field) {
+  const [clickField, setClickField] = useState([]);
+
   const [carData, setCarData] = useState({
     carBrand: data.data.carBrand,
     carModel: data.data.carModel,
@@ -9,7 +11,6 @@ function EachCarDetail(data, field) {
     province: data.data.province,
     isAvailable: data.data.isAvailable,
   });
-  //   console.log("data", data);
 
   function checkLabel(field) {
     if (field === "carBrand") {
@@ -34,20 +35,22 @@ function EachCarDetail(data, field) {
   });
 
   const [inputValues, setInputValues] = useState({ ...carData });
-
+  // console.log("editState", editState);
   function handleInputChange(e, field) {
+    console.log("e", e);
+    console.log("field", field);
     const { value } = e.target;
     setInputValues((pre) => ({
       ...pre,
       [field]: value,
     }));
   }
-
   function handleEdit(field) {
     setEditState((pre) => ({
       ...pre,
       [field]: true,
     }));
+    setClickField(field);
   }
 
   const handleConfirm = (field) => {
@@ -71,7 +74,7 @@ function EachCarDetail(data, field) {
       [field]: carData[field],
     }));
   };
-
+  console.log("clickField", clickField);
   return (
     <div className="w-25">
       <>
@@ -79,11 +82,23 @@ function EachCarDetail(data, field) {
           <div key={field}>
             {editState[field] ? (
               <>
-                <input
-                  type="text"
-                  value={inputValues[field]}
-                  onChange={(e) => handleInputChange(e, field)}
-                />
+                {clickField === "isAvailable" ? (
+                  <div>
+                    <select
+                      value={inputValues[field]}
+                      onChange={(e) => handleInputChange(e, field)}
+                    >
+                      <option value="true">Available</option>
+                      <option value="false">Not available</option>
+                    </select>
+                  </div>
+                ) : (
+                  <input
+                    type="text"
+                    value={inputValues[field]}
+                    onChange={(e) => handleInputChange(e, field)}
+                  />
+                )}
                 <button
                   className="btn btn-primary"
                   onClick={() => handleConfirm(field)}

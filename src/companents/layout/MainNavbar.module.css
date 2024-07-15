@@ -1,10 +1,11 @@
 .header {
   background-color: #299ff4;
-  /* height: 20%; */
+  height: 10vh;
 }
 
 .headerText {
   width: 90%;
+  padding: 2vh;
   /* background-color: red; */
   margin: 0 auto;
 }
