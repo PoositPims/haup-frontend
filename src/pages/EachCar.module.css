@@ -2,12 +2,19 @@
   width: 90%;
   margin: 20px auto 0 auto;
 }
-/* .productDetail {
-  background-color: red;
-} */
+
+.contentEachCar {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 50px;
+  padding: 50px;
+  box-shadow: 10px 10px 5px rgba(0, 0, 0, 0.1);
+  border-radius: 20px;
+
+  /* border: ; */
+}
+
 .name {
-  /* color: black; */
-  /* background-color: red; */
   font-size: 30px;
   margin-bottom: 2rem;
 }

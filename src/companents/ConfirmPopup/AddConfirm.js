@@ -1,6 +1,7 @@
 import React, { useContext, useState } from "react";
 import classes from "./AddConfirm.module.css";
 import { CarContexts } from "../../contexts/CarContexts";
+import carImage from "../../img/carPig.jpeg";
 
 function AddConfirm({ closePopUp, onAddData, addAndClase }) {
   const { addCar } = useContext(CarContexts);
@@ -10,9 +11,8 @@ function AddConfirm({ closePopUp, onAddData, addAndClase }) {
     carRegist: "",
     province: "",
     isAvailable: false,
-    carPic: "https://picsum.photos/id/1/250/250",
+    carPic: carImage,
   });
-
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setFormData({
@@ -30,10 +30,8 @@ function AddConfirm({ closePopUp, onAddData, addAndClase }) {
       carRegist: formData.carRegist,
       province: formData.province,
       isAvailable: formData.isAvailable,
-      carPic: "https://picsum.photos/id/1/250/250",
+      carPic: carImage,
     };
-    console.log("type valuetoAddCar", typeof valuetoAddCar);
-    console.log("valuetoAddCar", valuetoAddCar);
     addCar(valuetoAddCar);
     window.location.reload();
   };

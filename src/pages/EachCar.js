@@ -49,7 +49,7 @@ function EachCar() {
             Delete
           </button>
         </div>
-        <div className="d-flex justify-content-around mt-5">
+        <div className={classes.contentEachCar}>
           <EachCarPicture data={data.carPic} />
           <EachCarDetail data={data} />
         </div>

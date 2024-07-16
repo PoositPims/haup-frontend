@@ -11,7 +11,7 @@ function NotAvailableCar() {
   return (
     <div>
       <LayoutPage>
-        <div className={classes.contaciner}>
+        <div className={classes.container}>
           <h4>Company car</h4>
           <div className={classes.cardContainer}>
             {cars?.car?.length > 0 ? (

@@ -11,8 +11,6 @@ function CarCard({
   isAvailable,
   carPic,
 }) {
-  console.log("isAvailable", isAvailable);
-
   return (
     <div className={classes.eachCard}>
       <NavLink
@@ -28,9 +26,15 @@ function CarCard({
           isAvailable,
           carPic,
         }}
+        style={{ textDecoration: "none" }}
       >
-        <img className="card-img-top rounded" alt="card-img" src={carPic} />
-        <div className="d-flex justify-content-between">
+        <img
+          className="card-img-top rounded"
+          alt="card-img"
+          src={carPic}
+          style={{ width: "200px", height: "200px" }}
+        />
+        <div className="d-flex justify-content-between mt-2">
           <p>{carBrand}</p>
           <div
             className={

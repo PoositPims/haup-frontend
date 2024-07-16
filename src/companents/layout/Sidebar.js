@@ -1,13 +1,15 @@
-import React, { useState } from "react";
-import { Collapse, Nav, NavItem, NavLink } from "react-bootstrap";
+import React from "react";
+import { Nav, NavItem, NavLink } from "react-bootstrap";
 import classes from "./SideBar.module.css";
 import Card from "react-bootstrap/Card";
 
-function Sidebar({ isOpen }) {
+function Sidebar() {
   return (
-    <div>
-      <div id="example-collapse-text">
-        <Card body>
+    <div tyle={{ minHeight: "100vh" }}>
+      <Card
+        style={{ marginTop: "20px", borderRadius: "20px", minHeight: "100vh" }}
+      >
+        <div>
           <Nav className="d-flex flex-column">
             <NavItem>
               <NavLink href="/">All Car</NavLink>
@@ -19,8 +21,8 @@ function Sidebar({ isOpen }) {
               <NavLink href="/not-available">Not available</NavLink>
             </NavItem>
           </Nav>
-        </Card>
-      </div>
+        </div>
+      </Card>
     </div>
   );
 }

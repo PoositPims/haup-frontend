@@ -4,10 +4,16 @@ import { Row, Col } from "react-bootstrap";
 import Sidebar from "./Sidebar";
 function LayoutPage({ children }) {
   return (
-    <div>
+    <div style={{ minHeight: "100vh" }}>
       <MainNavbar />
-      <Row>
-        <Col sm={2} style={{ backgroundColor: "#f0f0f0", minHeight: "100vh" }}>
+      <Row style={{ minHeight: "100vh" }}>
+        <Col
+          sm={2}
+          style={{
+            backgroundColor: "#f0f0f0",
+            minHeight: "100vh",
+          }}
+        >
           <Sidebar />
         </Col>
         <Col sm={10} style={{ backgroundColor: "#f0f0f0", minHeight: "100vh" }}>

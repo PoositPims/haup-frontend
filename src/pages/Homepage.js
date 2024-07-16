@@ -4,8 +4,6 @@ import classes from "./Homepahe.module.css";
 import AddConfirm from "../companents/ConfirmPopup/AddConfirm";
 import LayoutPage from "../companents/layout/LayoutPage";
 import { CarContexts } from "../contexts/CarContexts";
-import Sidebar from "../companents/layout/Sidebar";
-import { Row, Col } from "react-bootstrap";
 
 function Homepage() {
   const { cars } = useContext(CarContexts);
@@ -20,15 +18,12 @@ function Homepage() {
     setShowPopupAdd(childrenData);
   };
 
-  useEffect(() => {
-    console.log("formData updated", formData);
-    console.log("cars", cars);
-  }, [cars, formData]);
+  useEffect(() => {}, [cars, formData]);
 
   return (
     <div>
       <LayoutPage>
-        <div className={classes.contaciner}>
+        <div className={classes.container}>
           <div className="d-flex justify-content-between">
             <h4>Company car</h4>
             <button

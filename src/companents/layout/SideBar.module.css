@@ -1,31 +1,12 @@
 container {
-  /* Style your main content area here */
-  padding: 20px;
   margin: 0 auto;
   max-width: 800px;
 }
 
-.sidebar {
-  position: fixed;
-  top: 0;
-  left: -100%;
-  width: 200px;
-  height: 100vh;
-  background-color: #f1f1f1;
-  transition: transform 0.3s ease-in-out;
+.cardSidebar {
+  height: 100%;
 }
-
-.sidebar.open {
-  left: 0;
-}
-
-.toggle-button {
-  position: fixed;
-  top: 20px;
-  left: 20px;
-  padding: 10px;
-  border: none;
-  background-color: #333;
-  color: white;
-  cursor: pointer;
+.card {
+  margin-top: 20px;
+  border-radius: 20px;
 }

@@ -149,7 +149,7 @@ function EachCarDetail(data) {
   };
 
   return (
-    <div className="w-25">
+    <div style={{ width: "40%" }}>
       <>
         {Object.keys(carData).map((field) => (
           <div key={field} className="mb-3">
@@ -164,7 +164,7 @@ function EachCarDetail(data) {
                 </button>
                 <button
                   onClick={() => handleCancel(field)}
-                  className="btn btn-danger"
+                  className="btn btn-danger ms-3"
                 >
                   Cancel
                 </button>
@@ -173,13 +173,15 @@ function EachCarDetail(data) {
               <>
                 <div className="d-flex justify-content-between">
                   <span>{checkLabel(field)}</span>
-                  {renderValue(field)}
-                  <button
-                    className="btn btn-warning mx-2"
-                    onClick={() => handleEdit(field)}
-                  >
-                    Edit
-                  </button>
+                  <div className="w-50 d-flex justify-content-between">
+                    <span>{renderValue(field)}</span>
+                    <button
+                      className="btn btn-warning"
+                      onClick={() => handleEdit(field)}
+                    >
+                      Edit
+                    </button>
+                  </div>
                 </div>
               </>
             )}
