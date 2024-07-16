@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import axios from "../../config/axios";
 // import classes from "./EachCarDetail.module.css";
 
 function EachCarDetail(data, field) {
@@ -49,15 +50,25 @@ function EachCarDetail(data, field) {
     setClickField(field);
   }
 
-  const handleConfirm = (field) => {
-    setCarData((prevState) => ({
-      ...prevState,
-      [field]: inputValues[field],
-    }));
-    setEditState((prevState) => ({
-      ...prevState,
-      [field]: false,
-    }));
+  const handleConfirm = async (field) => {
+    const id = data.data.id;
+    // console.log("field", field);
+    try {
+      const res = await axios.put(`/cars/${id}`, {
+        [field]: inputValues[field],
+      });
+      setCarData((prevState) => ({
+        ...prevState,
+        [field]: inputValues[field],
+      }));
+      setEditState((prevState) => ({
+        ...prevState,
+        [field]: false,
+      }));
+      console.log("res.data", res.data);
+    } catch (err) {
+      console.error(err);
+    }
   };
 
   const handleCancel = (field) => {
