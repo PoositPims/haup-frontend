@@ -9,8 +9,7 @@ function AvailableCar() {
   const availableCar = cars.car?.filter((car) => car.isAvailable === true);
 
   return (
-    <div>
-      <LayoutPage />
+    <LayoutPage>
       <div className={classes.contaciner}>
         <h4>Company car</h4>
         <div className={classes.cardContainer}>
@@ -34,7 +33,7 @@ function AvailableCar() {
           )}
         </div>
       </div>
-    </div>
+    </LayoutPage>
   );
 }
 

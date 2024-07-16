@@ -10,30 +10,31 @@ function NotAvailableCar() {
 
   return (
     <div>
-      <LayoutPage />
-      <div className={classes.contaciner}>
-        <h4>Company car</h4>
-        <div className={classes.cardContainer}>
-          {cars?.car?.length > 0 ? (
-            <>
-              {notAvailableCar?.map((item, index) => (
-                <CarCard
-                  id={item.id}
-                  key={index}
-                  carBrand={item.carBrand}
-                  carModel={item.carModel}
-                  carRegist={item.carRegist}
-                  province={item.province}
-                  isAvailable={item.isAvailable}
-                  carPic={item.carPic}
-                />
-              ))}
-            </>
-          ) : (
-            <p>There is no data</p>
-          )}
+      <LayoutPage>
+        <div className={classes.contaciner}>
+          <h4>Company car</h4>
+          <div className={classes.cardContainer}>
+            {cars?.car?.length > 0 ? (
+              <>
+                {notAvailableCar?.map((item, index) => (
+                  <CarCard
+                    id={item.id}
+                    key={index}
+                    carBrand={item.carBrand}
+                    carModel={item.carModel}
+                    carRegist={item.carRegist}
+                    province={item.province}
+                    isAvailable={item.isAvailable}
+                    carPic={item.carPic}
+                  />
+                ))}
+              </>
+            ) : (
+              <p>There is no data</p>
+            )}
+          </div>
         </div>
-      </div>
+      </LayoutPage>
     </div>
   );
 }
