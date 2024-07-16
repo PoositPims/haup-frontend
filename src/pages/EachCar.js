@@ -13,14 +13,10 @@ function EachCar() {
   const data = location.state;
 
   const [items, setItems] = useState([data]);
-  // console.log("[data]", [data]);
   const [showConfirm, setShowConfirm] = useState(false);
   const [itemToDelete, setItemToDelete] = useState(null);
 
-  console.log("data", data);
-
   function handleDeleteClick(itemId) {
-    console.log("itemId", itemId);
     setItemToDelete(itemId);
     setShowConfirm(true);
   }
@@ -28,10 +24,7 @@ function EachCar() {
   const confirmDelete = async () => {
     try {
       const res = await axios.delete(`/cars/${itemToDelete}`);
-      console.log("res", res);
-    } catch (err) {
-      console.log("err", err);
-    }
+    } catch (err) {}
     setShowConfirm(false);
     setItemToDelete(null);
     navigate("/");

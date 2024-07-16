@@ -1,39 +1,18 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import axios from "../../config/axios";
 
 function EachCarDetail(data) {
-  const id = data.data.id;
   const [clickField, setClickField] = useState([]);
+
   const [carData, setCarData] = useState({
-    carBrand: "",
-    carModel: "",
-    carRegist: "",
-    province: "",
-    isAvailable: false,
+    carBrand: data.data.carBrand,
+    carModel: data.data.carModel,
+    carRegist: data.data.carRegist,
+    province: data.data.province,
+    isAvailable: data.data.isAvailable,
   });
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const res = await axios.get(`/cars/${id}`);
-        const { carBrand, carModel, carRegist, province, isAvailable } =
-          res.data.car;
-        const filteredData = {
-          carBrand,
-          carModel,
-          carRegist,
-          province,
-          isAvailable,
-        };
-
-        setCarData(filteredData);
-      } catch (error) {
-        console.error("Error fetching data", error);
-      }
-    };
-
-    fetchData();
-  }, [id]);
+  console.log("carData.carBrand ==>", carData.carBrand);
 
   function checkLabel(field) {
     if (field === "carBrand") {
@@ -75,6 +54,9 @@ function EachCarDetail(data) {
   }
 
   const handleConfirm = async (field) => {
+    console.log("field", field);
+    console.log("inputValues[field]", inputValues[field]);
+
     const id = data.data.id;
     try {
       const res = await axios.put(`/cars/${id}`, {
@@ -123,9 +105,7 @@ function EachCarDetail(data) {
       return (
         <input
           type="text"
-          value={
-            inputValues[field] !== "" ? inputValues[field] : carData[field]
-          }
+          value={inputValues[field]}
           onChange={(e) => handleInputChange(e, field)}
         />
       );
@@ -133,6 +113,7 @@ function EachCarDetail(data) {
   };
 
   const renderValue = (field) => {
+    // console.log("carData.isAvailable", carData.isAvailable);
     if (field === "isAvailable") {
       return (
         <div
