@@ -17,8 +17,6 @@ function EachCar() {
   const [showConfirm, setShowConfirm] = useState(false);
   const [itemToDelete, setItemToDelete] = useState(null);
 
-  function onEdit() {}
-
   console.log("data", data);
 
   function handleDeleteClick(itemId) {
@@ -37,6 +35,7 @@ function EachCar() {
     setShowConfirm(false);
     setItemToDelete(null);
     navigate("/");
+    window.location.reload();
   };
 
   const cancelDelete = () => {
@@ -49,13 +48,6 @@ function EachCar() {
       <MainNavbar />
       <div className={classes.containner}>
         <div className="d-flex justify-content-end">
-          <button
-            type="button"
-            className="btn btn-warning mx-2"
-            onClick={() => onEdit()}
-          >
-            Edit
-          </button>
           <button
             type="button"
             className="btn btn-danger mx-2"

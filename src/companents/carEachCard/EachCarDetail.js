@@ -25,7 +25,6 @@ function EachCarDetail(data, field) {
       return "Status";
     }
   }
-
   const [editState, setEditState] = useState({
     carModel: false,
     carBrand: false,
@@ -35,10 +34,7 @@ function EachCarDetail(data, field) {
   });
 
   const [inputValues, setInputValues] = useState({ ...carData });
-  // console.log("editState", editState);
   function handleInputChange(e, field) {
-    console.log("e", e);
-    console.log("field", field);
     const { value } = e.target;
     setInputValues((pre) => ({
       ...pre,
@@ -74,7 +70,49 @@ function EachCarDetail(data, field) {
       [field]: carData[field],
     }));
   };
-  console.log("clickField", clickField);
+
+  const renderField = (field) => {
+    console.log("field", field);
+    if (field === "isAvailable") {
+      return (
+        <div>
+          <select
+            value={inputValues[field]}
+            onChange={(e) => handleInputChange(e, field)}
+            className="form-select form-select-lg mb-3"
+          >
+            <option value="true">Available</option>
+            <option value="false">Not available</option>
+          </select>
+        </div>
+      );
+    } else {
+      return (
+        <input
+          type="text"
+          value={inputValues[field]}
+          onChange={(e) => handleInputChange(e, field)}
+        />
+      );
+    }
+  };
+
+  const renderValue = (field) => {
+    if (field === "isAvailable") {
+      return (
+        <div
+          className={
+            carData.isAvailable === false ? "btn btn-danger" : "btn btn-success"
+          }
+        >
+          {carData.isAvailable === false ? "Not available" : "Available"}
+        </div>
+      );
+    } else {
+      return <span>{carData[field]}</span>;
+    }
+  };
+
   return (
     <div className="w-25">
       <>
@@ -82,23 +120,7 @@ function EachCarDetail(data, field) {
           <div key={field}>
             {editState[field] ? (
               <>
-                {clickField === "isAvailable" ? (
-                  <div>
-                    <select
-                      value={inputValues[field]}
-                      onChange={(e) => handleInputChange(e, field)}
-                    >
-                      <option value="true">Available</option>
-                      <option value="false">Not available</option>
-                    </select>
-                  </div>
-                ) : (
-                  <input
-                    type="text"
-                    value={inputValues[field]}
-                    onChange={(e) => handleInputChange(e, field)}
-                  />
-                )}
+                {renderField(field)}
                 <button
                   className="btn btn-primary"
                   onClick={() => handleConfirm(field)}
@@ -116,7 +138,7 @@ function EachCarDetail(data, field) {
               <>
                 <div className="d-flex justify-content-between">
                   <span>{checkLabel(field)}</span>
-                  <span>{carData[field]}</span>
+                  {renderValue(field)}
                   <button
                     className="btn btn-warning mx-2"
                     onClick={() => handleEdit(field)}

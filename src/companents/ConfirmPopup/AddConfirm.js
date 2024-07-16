@@ -49,7 +49,7 @@ function AddConfirm({ closePopUp, onAddData, addAndClase }) {
           <h2>Fill in the details</h2>
           <form onSubmit={handleFormSubmit}>
             <label>
-              Car Name:
+              Car Brand:
               <input
                 type="text"
                 name="carBrand"
